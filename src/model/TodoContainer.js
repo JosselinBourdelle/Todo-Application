@@ -7,18 +7,7 @@ class TodoContainer extends Component {
     constructor (props){
         super(props)
 
-        this.addTODO = this.addTODO.bind(this);
-        this.resetTodos = this.resetTodos.bind(this);
-        this.state = {todos: []}
-    }
-    componentDidUpdate(){
-        console.log(this.state.todos)
-    }
-    addTODO(title){
-        this.setState({todos:[...this.state.todos,{title: title, isDone: false}]})
-    }
-    resetTodos(){
-        this.setState({todos: []})
+        
     }
     render(){
         return (
