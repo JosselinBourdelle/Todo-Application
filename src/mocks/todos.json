@@ -1,0 +1,18 @@
+[
+    {
+        "title": "write a mail",
+        "isDone":false
+    },
+    {
+        "title": "Send a mail",
+        "isDone":false
+    },
+    {
+        "title": "do todo application",
+        "isDone":false
+    },
+    {
+        "title": "create a todo list",
+        "isDone":false
+    }
+]

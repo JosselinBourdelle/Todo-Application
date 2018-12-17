@@ -30,3 +30,12 @@
     transform: rotate(360deg);
   }
 }
+
+li > input, h3 {
+  display: inline;
+}
+
+li {
+  align-items: flex-start;
+  align-content: flex-start;
+}
