@@ -1,27 +1,39 @@
 import React, { Component } from 'react';
 import Todo from './Todo.js'
+import {TodoListContext} from './TodoListContext'
 
 class TodoList extends Component {
     constructor(props){
         super(props)
     }
-    render(){
-        const todos = (this.props.todos.map(todo => {
+    returnList(todos){
+        const todoList = (todos.map(todo => {
             return <Todo title={todo.title} isDone={todo.isDone} />
         }))
-        console.log(todos);
-        const elem = todos.length == 0 ? (
+        console.log(todoList);
+        const elem = todoList.length == 0 ? (
             <h4>list empty</h4>
         ) : (
-            todos
+            todoList
         )
+        return elem;
+    }
+    render(){
         return (
-            <>
-                <h2>TODO LIST :</h2>
-                <ul>
-                    {elem}
-                </ul>
-            </>
+            <TodoListContext.Consumer>
+                {
+                    ({todos}) => {
+                        return (
+                            <>
+                                <h2>TODO LIST :</h2>
+                                <ul>
+                                    {this.returnList(todos)}
+                                </ul>
+                            </>
+                        )
+                    }
+                }
+            </TodoListContext.Consumer>
         );
     }
 }

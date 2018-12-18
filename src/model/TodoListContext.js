@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 
-export const todos = [
+export let todos = [
     {
         title: "send a mail",
         isDone: false
     }
 ];
 
-export const addTodo = (title) => {
-    todos.push({title: title, isDone: false});
-}
+export const addTodo = (title) => {}
+
+export const resetTodos = () => {}
 
 export const TodoListContext = React.createContext({
-    todoList: todos,
-    addTodo: addTodo
+    todos,
+    addTodo,
+    resetTodos
 });
