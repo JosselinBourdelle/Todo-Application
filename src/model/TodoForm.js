@@ -1,23 +1,13 @@
 import React, { Component } from 'react';
-
+import {addTodo, resetTodo} from '../Redux/store/todo.action';
+import {connect} from 'react-redux';
 
 class TodoForm extends Component {
     constructor (props){
         super(props)
 
         this.state = {titleText: ''};
-        this.addTODO = props.addTODO;
-        this.resetTodos = props.resetTodos
-        this.submit = this.submit.bind(this);
-        this.reset = this.reset.bind(this)
         this.inputTextChange = this.inputTextChange.bind(this)
-    }
-    submit(){
-        this.addTODO(this.state.titleText)
-        this.setState({titleText: ""})
-    }
-    reset(){
-        this.resetTodos()
     }
     inputTextChange(event){
         this.setState({titleText: event.target.value})
@@ -28,11 +18,26 @@ class TodoForm extends Component {
                 <h2>TODO FORM :</h2>
                 <label>title :</label>
                 <input type='text' value={this.state.titleText} onChange={this.inputTextChange}/>
-                <input type='submit' value='Ajouter' onClick={this.submit}/>
-                <input type='submit' value='reset' onClick={this.reset}/>
+                <input type='submit' value='Ajouter' onClick={() => {
+                    this.props.addTodo(this.state.titleText);
+                    this.setState({titleText: ''});
+                }}/>
+                <input type='submit' value='reset' onClick={this.props.resetTodo}/>
             </>
         );
     }
 }
 
-export default TodoForm;
+const mapStateToProps = state => ({
+    todos: state.todos.list,
+});
+
+const mapDispatchToProps = dispatch => ({
+    addTodo: title => dispatch(addTodo(title)),
+    resetTodo: () => dispatch(resetTodo())
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(TodoForm)

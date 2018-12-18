@@ -3,22 +3,20 @@ import React, { Component } from 'react';
 class Todo extends Component {
     constructor (props){
         super(props)
-
+        console.log(' constructor todo : ',props);
+        
         this.state = {title: props.title, isDone: props.isDone}
         this.isDone = props.isDone
         this.setDone = this.setDone.bind(this)
-        this.titleElement = <h3>{this.state.title.toUpperCase()}</h3>
-    }
-    componentDidUpdate(){
-        
+        this.titleElement = <h3>{this.state.title}</h3>
     }
     setDone(){
         this.isDone = !this.isDone
         if(this.isDone){
-            this.titleElement = <h3><s>{this.state.title.toUpperCase()}</s></h3>
+            this.titleElement = <h3><s>{this.state.title}</s></h3>
         }
         else {
-            this.titleElement = <h3>{this.state.title.toUpperCase()}</h3>
+            this.titleElement = <h3>{this.state.title}</h3>
         }
         this.setState({isDone: this.isDone})
     }
