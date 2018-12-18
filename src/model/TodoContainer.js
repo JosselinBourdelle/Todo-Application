@@ -7,15 +7,16 @@ class TodoContainer extends Component {
     constructor (props){
         super(props)
 
-
         this.state = {
             todos,
             addTodo,
             resetTodos
         }
+    }
+    componentDidMount(){
         this.setState({
             addTodo: (title) => {
-                this.setState({todos: [...this.state.todos, {title: title, isDone: false}]})
+                this.setState({todos: [...this.state.todos, {key: title, title: title, isDone: false}]})
                 console.log(this.state.todos);
         },  resetTodos: () => {
             this.setState({todos: []})

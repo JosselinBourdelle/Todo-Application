@@ -8,7 +8,7 @@ class TodoList extends Component {
     }
     returnList(todos){
         const todoList = (todos.map(todo => {
-            return <Todo title={todo.title} isDone={todo.isDone} />
+            return <Todo key={todo.title} title={todo.title} isDone={todo.isDone} />
         }))
         console.log(todoList);
         const elem = todoList.length == 0 ? (

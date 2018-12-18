@@ -21,7 +21,7 @@ class TodoForm extends Component {
                                     <h2>TODO FORM :</h2>
                                     <label>title :</label>
                                     <input type='text' value={this.state.titleText} onChange={this.inputTextChange}/>
-                                    <input type='submit' value='Ajouter' onClick={() => { addTodo(this.state.titleText)}}/>
+                                    <input type='submit' value='Ajouter' onClick={() => {addTodo(this.state.titleText)}}/>
                                     <input type='submit' value='reset' onClick={resetTodos}/>
                                 </>
                             );
